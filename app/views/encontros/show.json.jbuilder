@@ -1,0 +1,1 @@
+json.partial! "encontros/encontro", encontro: @encontro

@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nome:</strong>
+  <%= @participante.nome %>
+</p>
+
+<p>
+  <strong>Nascimento:</strong>
+  <%= @participante.nascimento %>
+</p>
+
+<p>
+  <strong>Cpf:</strong>
+  <%= @participante.cpf %>
+</p>
+
+<p>
+  <strong>Rg:</strong>
+  <%= @participante.rg %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @participante.email %>
+</p>
+
+<p>
+  <strong>Valor pago:</strong>
+  <%= @participante.valor_pago %>
+</p>
+
+<p>
+  <strong>Tipo pagamento:</strong>
+  <%= @participante.tipo_pagamento %>
+</p>
+
+<%= link_to 'Edit', edit_participante_path(@participante) %> |
+<%= link_to 'Back', participantes_path %>

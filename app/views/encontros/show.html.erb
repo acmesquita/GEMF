@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+<div class="jumbotron">
+	<div class="container">
+		
+	</div>
+	<p>
+	  <strong>Título:</strong>
+	  <%= @encontro.titulo %>
+	</p>
+	
+	<p>
+	  <strong>Descrição:</strong>
+	  <%= @encontro.descricao %>
+	</p>
+	
+	<p>
+	  <strong>Tema:</strong>
+	  <%= @encontro.tema %>
+	</p>
+	
+	<p>
+	  <strong>Inscrições:</strong>
+	  <%= @encontro.inicio_inscricoes %>
+	
+	  <strong>até</strong>
+	  <%= @encontro.fim_inscricoes %>
+	</p>
+	
+	<p>
+	  <strong>Encontro:</strong>
+	  <%= @encontro.inicio_encontro %>
+	
+	  <strong> até</strong>
+	  <%= @encontro.fim_encontro %>
+	</p>
+	
+	<p>
+	  <strong>Valor:</strong>R$
+	  <%= @encontro.valor %>
+	</p>
+	
+	<p>
+	  <strong>Quantidade máxima de participantes:</strong>
+	  <%= @encontro.quant_max %>
+	</p>
+	</div>
+</div>
+
+<%= link_to 'Editar', edit_encontro_path(@encontro) , class:"btn btn-info"%> 
+<%= link_to 'Voltar', encontros_path , class:"btn btn-default"%>
