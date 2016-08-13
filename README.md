@@ -5,9 +5,10 @@
 	x Cadastrar um encontro
 	x Cadastrar um participante
 	x Cadastrar um usuário
-	- Associar um usuário a encontro através de um participante
-	- Associar um encontro a um participante
-	- Atualizar somente o campo valor do participante na tabela participante
+	x Associar um usuário a encontro através de um participante
+	x Associar um encontro a um participante
+	x Exibir todos os participantes na tela de exibição do encrontro.
+	- Atualizar somente o campo valor e tipo de pagamento do participante na tabela.
 
 
 ### Melhorias

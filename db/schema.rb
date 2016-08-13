@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160813135223) do
+ActiveRecord::Schema.define(version: 20160813144811) do
 
   create_table "encontros", force: :cascade do |t|
     t.string   "titulo"
@@ -27,21 +27,13 @@ ActiveRecord::Schema.define(version: 20160813135223) do
   end
 
   create_table "participantes", force: :cascade do |t|
-    t.string   "nome"
-    t.date     "nascimento"
-    t.string   "cpf"
-    t.string   "rg"
-    t.string   "email"
     t.decimal  "valor_pago"
     t.string   "tipo_pagamento"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.integer  "encontro_id"
-    t.string   "rua"
-    t.string   "numero"
-    t.string   "complemento"
-    t.string   "cidade"
-    t.string   "estado"
+    t.integer  "usuario_id"
+    t.index ["usuario_id"], name: "index_participantes_on_usuario_id"
   end
 
   create_table "usuarios", force: :cascade do |t|
@@ -52,6 +44,7 @@ ActiveRecord::Schema.define(version: 20160813135223) do
     t.string   "email"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.string   "cidade"
   end
 
 end

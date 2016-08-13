@@ -21,3 +21,8 @@
 
 en:
   hello: "Hello world"
+  enumerize:
+    participante:
+      tipo_pagamento:
+        dinheiro: "Dinheiro"
+        deposito: "Depósito"

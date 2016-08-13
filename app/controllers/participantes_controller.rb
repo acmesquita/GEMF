@@ -16,6 +16,7 @@ class ParticipantesController < ApplicationController
   def new
     @encontro = Encontro.find_by_id(params[:encontro_id])
     @participante = Participante.new
+    @participante.encontro = @encontro
   end
 
   # GET /participantes/1/edit
@@ -25,11 +26,11 @@ class ParticipantesController < ApplicationController
   # POST /participantes
   # POST /participantes.json
   def create
-    @participante = Participante.new(participante_params)
+    @participante = Participante.new(participante_params_create)
 
     respond_to do |format|
       if @participante.save
-        format.html { redirect_to @encontro, notice: 'Sua inscrição foi realizada com sucesso.' }
+        format.html { redirect_to @participante.encontro, notice: 'Sua inscrição foi realizada com sucesso.' }
         format.json { render :show, status: :created, location: @participante }
       else
         format.html { render :new }
@@ -42,8 +43,8 @@ class ParticipantesController < ApplicationController
   # PATCH/PUT /participantes/1.json
   def update
     respond_to do |format|
-      if @participante.update(participante_params)
-        format.html { redirect_to @participante, notice: 'Participante was successfully updated.' }
+      if @participante.update(participante_params_update)
+        format.html { redirect_to @participante.encontro, notice: 'Participante was successfully updated.' }
         format.json { render :show, status: :ok, location: @participante }
       else
         format.html { render :edit }
@@ -69,7 +70,10 @@ class ParticipantesController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def participante_params
-      params.require(:participante).permit(:nome, :nascimento, :cpf, :rg, :email, :valor_pago, :tipo_pagamento, :encontro)
+    def participante_params_create
+      params.require(:participante).permit(:encontro_id, :usuario_id)
+    end
+    def participante_params_update
+      params.require(:participante).permit(:usuario_id, :valor_pago, :tipo_pagamento)
     end
 end

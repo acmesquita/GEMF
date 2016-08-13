@@ -1,6 +1,24 @@
-<h1>Editing Participante</h1>
+<h1>Atualizar o Valor</h1>
+<%= form_for(@participante) do |f| %>
 
-<%= render 'form', participante: @participante %>
+  <div class="">
+    <%= @participante.usuario.nome%>
+  </div>
 
-<%= link_to 'Show', @participante %> |
-<%= link_to 'Back', participantes_path %>
+  <div class="field">
+    <%= f.label :valor_pago, 'Valor' %>
+    <%= f.text_field :valor_pago %>
+  </div>
+
+  <div class="field">
+    <%= f.label :tipo_pagamento, 'Forma de Pagamento' %>
+    <%= f.select :tipo_pagamento, Participante.tipo_pagamento.options %>
+  </div>
+
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<%= link_to 'Back', @participante.encontro %>

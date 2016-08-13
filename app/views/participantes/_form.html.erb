@@ -11,39 +11,11 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :nome %>
-    <%= f.text_field :nome %>
-  </div>
+  <%= f.hidden_field :encontro_id %>
 
   <div class="field">
-    <%= f.label :nascimento %>
-    <%= f.date_select :nascimento %>
-  </div>
-
-  <div class="field">
-    <%= f.label :cpf %>
-    <%= f.text_field :cpf %>
-  </div>
-
-  <div class="field">
-    <%= f.label :rg %>
-    <%= f.text_field :rg %>
-  </div>
-
-  <div class="field">
-    <%= f.label :email %>
-    <%= f.text_field :email %>
-  </div>
-
-  <div class="field">
-    <%= f.label :valor_pago %>
-    <%= f.text_field :valor_pago %>
-  </div>
-
-  <div class="field">
-    <%= f.label :tipo_pagamento %>
-    <%= f.text_field :tipo_pagamento %>
+    <%= f.label :usuario_id, 'Usuário' %>
+    <%= f.collection_select :usuario_id, Usuario.all, :id, :nome %>
   </div>
 
   <div class="actions">

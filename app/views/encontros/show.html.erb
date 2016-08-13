@@ -47,6 +47,29 @@
 	<p><%= link_to 'Inscreva-se', new_participante_path(encontro_id: @encontro) , class:"btn btn-info"%> </p>
 	</div>
 
+	<div class="">
+		<table class="table table-hover">
+			<thead>
+				<th>Nome</th>
+				<th>Cidade</th>
+				<th>Valor</th>
+				<th>Forma de Pagamento</th>
+				<th>Ações</th>
+			</thead>
+			<tbody>
+				<% @encontro.participantes.each do |participante| %>
+					<tr>
+						<td><%= participante.usuario.nome%></td>
+						<td><%= participante.usuario.cidade%></td>
+						<td><%= participante.valor_pago%></td>
+						<td><%= t(participante.tipo_pagamento) unless participante.tipo_pagamento.nil? %></td>
+						<td><%= link_to 'Editar', edit_participante_path(participante) %></td>
+					</tr>
+				<% end %>
+			</tbody>	
+		</table>
+	</div>
+
 </div>
 
 <%= link_to 'Editar', edit_encontro_path(@encontro) , class:"btn btn-info"%> 
