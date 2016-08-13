@@ -15,5 +15,7 @@
 
 ### Melhorias
 
-	- Criar tipos de usuário → admin e comum
-	- 
+	- Melhorar interface telas:
+		- Exibição do encontro
+		- Formulários
+		- Telas de Login e Logout
