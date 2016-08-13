@@ -14,13 +14,14 @@ class ParticipantesController < ApplicationController
 
   # GET /participantes/new
   def new
+    @encontro = Encontro.find_by_id(params[:encontro_id])
     @participante = Participante.new
   end
 
   # GET /participantes/1/edit
   def edit
   end
-
+ 
   # POST /participantes
   # POST /participantes.json
   def create
@@ -28,7 +29,7 @@ class ParticipantesController < ApplicationController
 
     respond_to do |format|
       if @participante.save
-        format.html { redirect_to @participante, notice: 'Participante was successfully created.' }
+        format.html { redirect_to @encontro, notice: 'Sua inscrição foi realizada com sucesso.' }
         format.json { render :show, status: :created, location: @participante }
       else
         format.html { render :new }
@@ -69,6 +70,6 @@ class ParticipantesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def participante_params
-      params.require(:participante).permit(:nome, :nascimento, :cpf, :rg, :email, :valor_pago, :tipo_pagamento)
+      params.require(:participante).permit(:nome, :nascimento, :cpf, :rg, :email, :valor_pago, :tipo_pagamento, :encontro)
     end
 end

@@ -28,7 +28,7 @@ class EncontrosController < ApplicationController
 
     respond_to do |format|
       if @encontro.save
-        format.html { redirect_to @encontro, notice: 'Encontro was successfully created.' }
+        format.html { redirect_to @encontro, notice: 'Encontro criado com sucesso.' }
         format.json { render :show, status: :created, location: @encontro }
       else
         format.html { render :new }

@@ -43,7 +43,10 @@
 	  <strong>Quantidade máxima de participantes:</strong>
 	  <%= @encontro.quant_max %>
 	</p>
+	
+	<p><%= link_to 'Inscreva-se', new_participante_path(encontro_id: @encontro) , class:"btn btn-info"%> </p>
 	</div>
+
 </div>
 
 <%= link_to 'Editar', edit_encontro_path(@encontro) , class:"btn btn-info"%> 
