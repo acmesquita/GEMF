@@ -11,6 +11,18 @@
 	x Atualizar somente o campo valor e tipo de pagamento do participante na tabela.
 	- Atenticação
 	- Autorização
+	- Validações:
+		- Validações dos campos obrigatórios
+		- A quantidade de inscritos não pode ser maior que o número máximo de participantes cadastrado no encontro
+		- Cada participante não pode pagar mais que o valor do encontro
+		- Não permitir que a data da inscrição não passe do último dia do encontro
+		- Somente o perfil administrador pode:
+			- alterar o valor pago pelo participante
+			- cadastrar um encontro
+			- visualizar os encontros cadastrados por ele
+			- alterar as informações do encontro
+		- Somente o perfil comum pode alterar o seu cadastro
+		- Deve ser exibido para o usuário comum se há vagas disponíveis para o encontro
 
 
 ### Melhorias
