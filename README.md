@@ -9,7 +9,7 @@
 	x Associar um encontro a um participante
 	x Exibir todos os participantes na tela de exibição do encrontro.
 	x Atualizar somente o campo valor e tipo de pagamento do participante na tabela.
-	- Atenticação
+	x Atenticação
 	- Autorização
 	- Validações:
 		- Validações dos campos obrigatórios
