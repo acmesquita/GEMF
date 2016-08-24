@@ -1,14 +1,16 @@
 <h1>Atualizar o Valor</h1>
 <%= form_for(@participante) do |f| %>
 
-	<form class="col-md-3">
+	<form class="">
 
-	  <div class="field form-group col-md-3">
-	    <%= @participante.usuario.nome%>
+	  <div class="field form-group col-md-5">
+		<%= @participante.usuario.nome%>
+		<div class="field form-group col-md-12">
 	    <%= f.label :valor_pago, 'Valor' %>
 	    <%= f.text_field :valor_pago, class:"form-control" %>
 	    <%= f.label :tipo_pagamento, 'Forma de Pagamento' %>
-	    <%= f.select :tipo_pagamento, Participante.tipo_pagamento.options, class:""%>
+	    <%= f.select :tipo_pagamento, Participante.tipo_pagamento.options, {}, class:"form-control"%>
+	    </div>
 	  </div>
 
 	  <div class="actions">
