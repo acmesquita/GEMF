@@ -1,4 +1,9 @@
-<p id="notice"><%= notice %></p>
+<% if !notice.nil? %>
+	<div class="alert alert-info">
+		<p id="notice"><%= notice %></p>
+	</div>
+<% end %>
+
 	<div class="row">
 		<div class="col-md-8">
 			<table class="table table-hover">
@@ -16,7 +21,7 @@
 							<td><%= participante.usuario.cidade%></td>
 							<td><%= participante.valor_pago%></td>
 							<td><%= t(participante.tipo_pagamento) unless participante.tipo_pagamento.nil? %></td>
-							<td><%= link_to 'Editar', edit_participante_path(participante), class:"btn btn-info" %></td>
+							<td><%= link_to 'Atualizar Pagamento', edit_participante_path(participante), class:"btn btn-info" %></td>
 						</tr>
 					<% end %>
 				</tbody>	
@@ -32,7 +37,6 @@
 			<p><strong>Valor:</strong> R$ <%= @encontro.valor %></p>
 	  		<p><strong>Quantidade Máxima: </strong><%= @encontro.quant_max %></p>
 	  		<p>
-	  			<%= link_to 'Inscreva-se', new_participante_path(encontro_id: @encontro) , class:"btn btn-info"%> 
 	  		    <%= link_to 'Editar', edit_encontro_path(@encontro) , class:"btn btn-primary"%>
 	  			<%= link_to 'Voltar', encontros_path , class:"btn btn-default"%>
 	  		</p>
