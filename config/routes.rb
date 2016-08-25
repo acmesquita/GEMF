@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :usuarios
+  devise_for :usuarios, :controllers => { registrations: 'registrations' }
   resources :usuarios
   resources :participantes
   resources :encontros
