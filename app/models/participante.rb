@@ -4,6 +4,6 @@ class Participante < ApplicationRecord
   belongs_to :encontro
   belongs_to :usuario
 
-  enumerize :tipo_pagamento, in: [:dinheiro, :deposito], i18n_scope: "tipo_pagamento"
+  enumerize :tipo_pagamento, in: [:dinheiro, :deposito]
 
 end

@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Meus Encontros</h1>
-
-<%= link_to 'Novo Encontro', new_encontro_path, class:"btn btn-primary" %>
+<div class="row para_direita">
+  <%= link_to 'Novo Encontro', new_encontro_path, class:"btn btn-primary" %>
+</div>
 <br />
 
 <table class="table table-hover">
@@ -17,14 +17,18 @@
       <th>Fim encontro</th>
       <th>Valor</th>
       <th>Quant max</th>
-      <th colspan="3"></th>
+      <th colspan="2"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @encontros.each do |encontro| %>
       <tr>
-        <td><%= link_to encontro.titulo, encontro %></td>
+        <% if policy(encontro).edita? %>
+          <td><%= link_to encontro.titulo, encontro %></td>
+        <% else %>
+        <td><%= encontro.titulo%></td>
+        <% end %>
         <!-- <td><%= encontro.descricao %></td> -->
         <td><%= encontro.tema %></td>
         <td><%= encontro.inicio_inscricoes %></td>
@@ -33,8 +37,22 @@
         <td><%= encontro.fim_encontro %></td>
         <td><%= encontro.valor %></td>
         <td><%= encontro.quant_max %></td>
-        <td><%= link_to 'Editar', edit_encontro_path(encontro) , class:"btn btn-info"%></td>
-        <td><%= link_to 'Deletar', encontro, method: :delete, data: { confirm: 'Você tem certeza?' } , class:"btn btn-danger"%></td>
+        <% if policy(encontro).inscreve? %>
+          <td colspan="2">
+            <%= link_to 'Inscreva-se', new_participante_path(encontro_id: encontro) , class:"btn btn-info"%>
+          </td>
+        <% end %>
+
+        <% if policy(encontro).edita? %>
+          <td>
+            <%= link_to 'Editar', edit_encontro_path(encontro) , class:"btn btn-info"%>      
+          </td>
+        <% end %>
+        <% if policy(encontro).deleta? %>
+          <td>
+            <%= link_to 'Deletar', encontro, method: :delete, data: { confirm: 'Você tem certeza?' } , class:"btn btn-danger"%>
+          </td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

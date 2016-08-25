@@ -1,79 +1,44 @@
 <p id="notice"><%= notice %></p>
-<div class="jumbotron">
-	<div class="container">
-		
-	</div>
-	<p>
-	  <strong>Título:</strong>
-	  <%= @encontro.titulo %>
-	</p>
-	
-	<p>
-	  <strong>Descrição:</strong>
-	  <%= @encontro.descricao %>
-	</p>
-	
-	<p>
-	  <strong>Tema:</strong>
-	  <%= @encontro.tema %>
-	</p>
-	
-	<p>
-	  <strong>Inscrições:</strong>
-	  <%= @encontro.inicio_inscricoes %>
-	
-	  <strong>até</strong>
-	  <%= @encontro.fim_inscricoes %>
-	</p>
-	
-	<p>
-	  <strong>Encontro:</strong>
-	  <%= @encontro.inicio_encontro %>
-	
-	  <strong> até</strong>
-	  <%= @encontro.fim_encontro %>
-	</p>
-	
-	<p>
-	  <strong>Valor:</strong>R$
-	  <%= @encontro.valor %>
-	</p>
-	
-	<p>
-	  <strong>Quantidade máxima de participantes:</strong>
-	  <%= @encontro.quant_max %>
-	</p>
-	
-	<p><%= link_to 'Inscreva-se', new_participante_path(encontro_id: @encontro) , class:"btn btn-info"%> 
-		<%= link_to 'Editar', edit_encontro_path(@encontro) , class:"btn btn-primary"%> 
-		<%= link_to 'Voltar', encontros_path , class:"btn btn-default"%>
-	</p>
+	<div class="row">
+		<div class="col-md-8">
+			<table class="table table-hover">
+				<thead>
+					<th>Nome</th>
+					<th>Cidade</th>
+					<th>Valor</th>
+					<th>Forma de Pagamento</th>
+					<th>Ações</th>
+				</thead>
+				<tbody>
+					<% @encontro.participantes.each do |participante| %>
+						<tr>
+							<td><%= participante.usuario.nome%></td>
+							<td><%= participante.usuario.cidade%></td>
+							<td><%= participante.valor_pago%></td>
+							<td><%= t(participante.tipo_pagamento) unless participante.tipo_pagamento.nil? %></td>
+							<td><%= link_to 'Editar', edit_participante_path(participante), class:"btn btn-info" %></td>
+						</tr>
+					<% end %>
+				</tbody>	
+			</table>
+		</div>
+
+		<div class="col-md-4">
+			<p><strong><%= @encontro.titulo %></strong></p>
+			<p><%= @encontro.descricao %></p>
+			<p><%= @encontro.tema %></p>
+			<p><strong>Inscrições: </strong> <%= @encontro.inicio_inscricoes %> até <%= @encontro.fim_inscricoes %></p>
+			<p><strong>Encontro: </strong><%= @encontro.inicio_encontro %> até <%= @encontro.fim_encontro %></p>
+			<p><strong>Valor:</strong> R$ <%= @encontro.valor %></p>
+	  		<p><strong>Quantidade Máxima: </strong><%= @encontro.quant_max %></p>
+	  		<p>
+	  			<%= link_to 'Inscreva-se', new_participante_path(encontro_id: @encontro) , class:"btn btn-info"%> 
+	  		    <%= link_to 'Editar', edit_encontro_path(@encontro) , class:"btn btn-primary"%>
+	  			<%= link_to 'Voltar', encontros_path , class:"btn btn-default"%>
+	  		</p>
+		</div>
 	</div>
 
-
-	<div class="">
-		<table class="table table-hover">
-			<thead>
-				<th>Nome</th>
-				<th>Cidade</th>
-				<th>Valor</th>
-				<th>Forma de Pagamento</th>
-				<th>Ações</th>
-			</thead>
-			<tbody>
-				<% @encontro.participantes.each do |participante| %>
-					<tr>
-						<td><%= participante.usuario.nome%></td>
-						<td><%= participante.usuario.cidade%></td>
-						<td><%= participante.valor_pago%></td>
-						<td><%= t(participante.tipo_pagamento) unless participante.tipo_pagamento.nil? %></td>
-						<td><%= link_to 'Editar', edit_participante_path(participante) %></td>
-					</tr>
-				<% end %>
-			</tbody>	
-		</table>
 	</div>
-
-</div>
-
-
+	
+	</div>

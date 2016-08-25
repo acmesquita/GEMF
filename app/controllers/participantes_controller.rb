@@ -17,6 +17,7 @@ class ParticipantesController < ApplicationController
     @encontro = Encontro.find_by_id(params[:encontro_id])
     @participante = Participante.new
     @participante.encontro = @encontro
+    authorize @participante
   end
 
   # GET /participantes/1/edit
@@ -27,10 +28,11 @@ class ParticipantesController < ApplicationController
   # POST /participantes.json
   def create
     @participante = Participante.new(participante_params_create)
+    @participante.usuario = current_usuario
 
     respond_to do |format|
       if @participante.save
-        format.html { redirect_to @participante.encontro, notice: 'Sua inscrição foi realizada com sucesso.' }
+        format.html { redirect_to encontros_path, notice: 'Sua inscrição foi realizada com sucesso.' }
         format.json { render :show, status: :created, location: @participante }
       else
         format.html { render :new }
@@ -44,7 +46,7 @@ class ParticipantesController < ApplicationController
   def update
     respond_to do |format|
       if @participante.update(participante_params_update)
-        format.html { redirect_to @participante.encontro, notice: 'Participante was successfully updated.' }
+        format.html { redirect_to encontros_path, notice: 'Participante was successfully updated.' }
         format.json { render :show, status: :ok, location: @participante }
       else
         format.html { render :edit }
@@ -71,7 +73,7 @@ class ParticipantesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def participante_params_create
-      params.require(:participante).permit(:encontro_id, :usuario_id)
+      params.require(:participante).permit(:encontro_id)
     end
     def participante_params_update
       params.require(:participante).permit(:usuario_id, :valor_pago, :tipo_pagamento)

@@ -12,13 +12,11 @@
   <% end %>
 
   <%= f.hidden_field :encontro_id %>
-
-  <div class="field">
-    <%= f.label :usuario_id, 'Usuário' %>
-    <%= f.collection_select :usuario_id, Usuario.all, :id, :nome %>
-  </div>
-
+  <p>
+  Bla bla bla da inscrição.
+  </p>
+  
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Confirmar inscrição', class: 'btn btn-primary' %>
   </div>
 <% end %>

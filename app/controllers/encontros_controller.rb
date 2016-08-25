@@ -10,6 +10,7 @@ class EncontrosController < ApplicationController
   # GET /encontros/1
   # GET /encontros/1.json
   def show
+    authorize @encontro
   end
 
   # GET /encontros/new
@@ -69,6 +70,6 @@ class EncontrosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def encontro_params
-      params.require(:encontro).permit(:titulo, :descricao, :tema, :inicio_inscricoes, :fim_inscricoes, :inicio_encontro, :fim_encontro, :valor, :quant_max)
+      params.require(:encontro).permit(:titulo, :descricao, :tema, :inicio_inscricoes, :fim_inscricoes, :inicio_encontro, :fim_encontro, :valor, :quant_max, :criador_id)
     end
 end

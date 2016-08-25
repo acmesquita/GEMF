@@ -10,47 +10,47 @@
       </ul>
     </div>
   <% end %>
-<form class="form-horizontal">
+
   <div class="form-group">
-    <%= f.label :titulo , class:"col-sm-2 control-label"%>
-    <div class="col-sm-10">
+    <%= f.label :titulo , class:""%>
+    <div class="">
     	<%= f.text_field :titulo, class:"form-control" %>
     </div>
   </div>
 <br />
   <div class="form-group">
-    <%= f.label :descricao , class:"col-sm-2 control-label"%>
-    <div class="col-sm-10">
+    <%= f.label :descricao , class:""%>
+    <div class="">
 	    <%= f.text_area :descricao, class:"form-control" %>
     </div>
   </div>
 <br />
   <div class="form-group">
-    <%= f.label :tema , class:"col-sm-2 control-label"%>
-	<div class="col-sm-10">
+    <%= f.label :tema , class:""%>
+	<div class="">
 	    <%= f.text_field :tema, class:"form-control" %>
 	</div>
   </div>
 <br />
   <div class="form-group">
-    <%= f.label :inicio_inscricoes, class:"col-sm-2 control-label" %>
-    <div class="col-sm-10">
+    <%= f.label :inicio_inscricoes, class:"" %>
+    <div class="">
 	    <%= f.text_field :inicio_inscricoes, class:"form-control", type:"date" %>
     </div>
   </div>
 <br />
 
   <div class="form-group">
-    <%= f.label :fim_inscricoes , class:"col-sm-2 control-label"%>
-    <div class="col-sm-10">
+    <%= f.label :fim_inscricoes , class:""%>
+    <div class="">
 	    <%= f.text_field :fim_inscricoes, class:"form-control", type:"date" %>
     </div>
   </div>
 <br />
 
  <div class="form-group">
-    <%= f.label :inicio_encontro , class:"col-sm-2 control-label"%>
-    <div class="col-sm-10">
+    <%= f.label :inicio_encontro , class:""%>
+    <div class="">
 	    <%= f.text_field :inicio_encontro, class:"form-control", type:"date" %>
     </div>
   </div>
@@ -58,32 +58,37 @@
 <br />
 
  <div class="form-group">
-    <%= f.label :fim_encontro , class:"col-sm-2 control-label"%>
-    <div class="col-sm-10">
+    <%= f.label :fim_encontro , class:""%>
+    <div class="">
 	    <%= f.text_field :fim_encontro, class:"form-control", type:"date" %>
     </div>
   </div>
 
 <br />
  <div class="form-group">
-    <%= f.label :valor , class:"col-sm-2 control-label"%>
-    <div class="col-sm-10">
+    <%= f.label :valor , class:""%>
+    <div class="">
 	    <%= f.text_field :valor, class:"form-control", type:"decimal" %>
     </div>
   </div>
 
 <br />
  <div class="form-group">
-    <%= f.label :quant_max , class:"col-sm-2 control-label"%>
-    <div class="col-sm-10">
+    <%= f.label :quant_max , class:""%>
+    <div class="">
 	    <%= f.text_field :quant_max, class:"form-control", type:"number" %>
     </div>
   </div>
 
+<%= f.hidden_field :criador_id, value: current_usuario.id %>
 <br />
  <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-    	<%= f.submit(class:"btn btn-success") %>  
+    <div class="actions">
+      <% if @encontro.id.nil? %>
+    	   <%= f.submit 'Criar Encontro', class:"btn btn-success" %>  
+      <% else %>
+         <%= f.submit 'Altualizar', class:"btn btn-success" %>  
+      <% end %>
     </div>
   </div>
 <% end %>

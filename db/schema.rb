@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160815151003) do
+ActiveRecord::Schema.define(version: 20160825173508) do
 
   create_table "encontros", force: :cascade do |t|
     t.string   "titulo"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20160815151003) do
     t.integer  "quant_max"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
+    t.integer  "criador_id"
   end
 
   create_table "participantes", force: :cascade do |t|
