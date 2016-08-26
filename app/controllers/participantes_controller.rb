@@ -28,9 +28,9 @@ class ParticipantesController < ApplicationController
   # POST /participantes.json
   def create
     @participante = Participante.new(participante_params_create)
-    @participante.usuario = current_usuario
-
+    @participante.usuario_id = current_usuario.id
     respond_to do |format|
+    if  Participante.where('encontro_id', @participante.encontro_id).where('usuario_id', current_usuario.id).count() < 1
       if @participante.save
         format.html { redirect_to encontros_path, notice: 'Sua inscrição foi realizada com sucesso.' }
         format.json { render :show, status: :created, location: @participante }
@@ -38,7 +38,11 @@ class ParticipantesController < ApplicationController
         format.html { render :new }
         format.json { render json: @participante.errors, status: :unprocessable_entity }
       end
+    else
+        format.html { render :new }
+        format.json { render json: @participante.errors, status: :unprocessable_entity }
     end
+  end
   end
 
   # PATCH/PUT /participantes/1

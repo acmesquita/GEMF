@@ -2,6 +2,6 @@ class UsuarioPolicy < ApplicationPolicy
 
 
 	def inscrever?
-		return 
+		return false
 	end
 end
