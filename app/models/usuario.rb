@@ -5,7 +5,7 @@ class Usuario < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 	has_many :participantes
 
-	def participa? (encontro)
-		# perguntar se pertence a esse encontro?
+	def participa? (encontro, user)
+		Participante.where('encontro_id', encontro.id, 'usuario_id', user.id).exists?
 	end
 end

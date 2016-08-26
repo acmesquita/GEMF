@@ -1,5 +1,11 @@
-<h1>Cadastro Encontro</h1>
+<div class="container">
+	<div class="col-md-1"></div>
+	<div class="col-md-10">
+		<h1>Cadastro </h1>
+		<%= render 'form', encontro: @encontro %>
 
-<%= render 'form', encontro: @encontro %>
-
-<%= link_to 'Voltar', encontros_path, class:"btn btn-default" %>
+		<%= link_to 'Voltar', encontros_path, class:"btn btn-default" %>	
+	</div>
+	<div class="col-md-1"></div>
+	<div class="row"></div>
+</div>

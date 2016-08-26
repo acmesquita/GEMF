@@ -31,15 +31,14 @@ class ParticipantesController < ApplicationController
     @participante.usuario_id = current_usuario.id
     @encontro = @participante.encontro
     respond_to do |format|
-      # if current_usuario.participa? @encontro
-    if  Participante.where('encontro_id', @participante.encontro_id, 'usuario_id', current_usuario.id).exists?
-      if @participante.save
-        format.html { redirect_to encontros_path, notice: 'Sua inscrição foi realizada com sucesso.' }
-        format.json { render :show, status: :created, location: @participante }
-      else
-        format.html { render :new }
-        format.json { render json: @participante.errors, status: :unprocessable_entity }
-      end
+      if current_usuario.participa?(@encontro, current_usuario)
+        if @participante.save
+          format.html { redirect_to encontros_path, notice: 'Sua inscrição foi realizada com sucesso.' }
+          format.json { render :show, status: :created, location: @participante }
+        else
+          format.html { render :new }
+          format.json { render json: @participante.errors, status: :unprocessable_entity }
+        end
     else
         format.html { render :new }
         format.json { render json: @participante.errors, status: :unprocessable_entity }

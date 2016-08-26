@@ -1,24 +1,33 @@
-<h1>Atualizar o Valor</h1>
-<%= form_for(@participante) do |f| %>
+<div class="container">
+<div class="col-md-1"></div>
+<div class="col-md-10">
+	<h1>Atualizar Pagamento</h1>
+	<%= form_for(@participante) do |f| %>
+		
+		  <div class="row">
+			<h5>Participante:</h5><h3><%= @participante.usuario.nome%></h3>
+		  </div>
+		  <div class="row">
+			<div class="col-md-6">
+			    <%= f.label :valor_pago, 'Valor' %>
+			    <%= f.text_field :valor_pago, class:"form-control" %>
+			</div>		  	
+			<div class="col-md-6">
+			    <%= f.label :tipo_pagamento, 'Forma de Pagamento' %>
+			    <%= f.select :tipo_pagamento, Participante.tipo_pagamento.options, {}, class:"form-control"%>
+			</div>
+		  </div>
+		  <br/>
+		  <div class="row">
+			  <div class="col-md-6 actions">
+			    <%= f.submit 'Atualizar Pagamento', class:"btn btn-success"%>
+			  </div>
+		  </div>
 
-	<form class="">
-
-	  <div class="field form-group col-md-5">
-		<%= @participante.usuario.nome%>
-		<div class="field form-group col-md-12">
-	    <%= f.label :valor_pago, 'Valor' %>
-	    <%= f.text_field :valor_pago, class:"form-control" %>
-	    <%= f.label :tipo_pagamento, 'Forma de Pagamento' %>
-	    <%= f.select :tipo_pagamento, Participante.tipo_pagamento.options, {}, class:"form-control"%>
-	    </div>
-	  </div>
-
-	  <div class="actions">
-	    <%= f.submit 'Atualizar Pagamento', class:"btn btn-success"%>
-	  </div>
-
-	</form>
-
-<% end %>
-
-<%= link_to 'Voltar', @participante.encontro, class:"btn btn-default" %>
+	<% end %>
+	<div class="row">
+		<%= link_to 'Voltar', @participante.encontro, class:"btn btn-default" %>
+	</div>
+</div>
+<div class="col-md-1"></div>
+</div>

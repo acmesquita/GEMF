@@ -21,7 +21,7 @@
 							<td><%= participante.usuario.cidade%></td>
 							<td><%= participante.valor_pago%></td>
 							<td><%= t(participante.tipo_pagamento) unless participante.tipo_pagamento.nil? %></td>
-							<td><%= link_to 'Atualizar Pagamento', edit_participante_path(participante), class:"btn btn-info" %></td>
+							<td><%= link_to 'Atualizar Pagamento', edit_participante_path(participante), class:"btn btn-warning" %></td>
 						</tr>
 					<% end %>
 				</tbody>	

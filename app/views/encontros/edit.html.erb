@@ -1,7 +1,13 @@
-<h1>Editar Encontro</h1>
+<div class="conaiter">
+	<div  class="col-md-1"></div>
+	<div  class="col-md-10">
+		<h1>Atualizar as Informações</h1>
+		<%= render 'form', encontro: @encontro %>
 
+		<%= link_to 'Exibir', @encontro, class:"btn btn-primary" %>
+		<%= link_to 'Voltar', encontros_path, class:"btn btn-default" %>
 
-<%= link_to 'Exibir', @encontro, class:"btn btn-primary" %>
-<%= link_to 'Voltar', encontros_path, class:"btn btn-default" %>
-
-<%= render 'form', encontro: @encontro %>
+	</div>
+	<div  class="col-md-1"></div>
+	<div class="row"></div>
+</div>
