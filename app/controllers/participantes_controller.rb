@@ -29,8 +29,10 @@ class ParticipantesController < ApplicationController
   def create
     @participante = Participante.new(participante_params_create)
     @participante.usuario_id = current_usuario.id
+    @encontro = @participante.encontro
     respond_to do |format|
-    if  Participante.where('encontro_id', @participante.encontro_id).where('usuario_id', current_usuario.id).count() < 1
+      # if current_usuario.participa? @encontro
+    if  Participante.where('encontro_id', @participante.encontro_id, 'usuario_id', current_usuario.id).exists?
       if @participante.save
         format.html { redirect_to encontros_path, notice: 'Sua inscrição foi realizada com sucesso.' }
         format.json { render :show, status: :created, location: @participante }

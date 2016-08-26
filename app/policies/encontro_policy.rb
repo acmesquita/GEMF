@@ -6,7 +6,7 @@ class EncontroPolicy < ApplicationPolicy
   end
 
   def inscrito?
-    return true if Participante.where('encontro_id',@record.id).where('usuario_id',@user.id).count() < 1
+    Participante.where(encontro_id: @record.id, usuario_id: @user.id).exists?
   end
 
   def edita?

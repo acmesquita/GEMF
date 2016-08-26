@@ -26,9 +26,13 @@ class EncontrosController < ApplicationController
   # POST /encontros.json
   def create
     @encontro = Encontro.new(encontro_params)
-
+    
     respond_to do |format|
       if @encontro.save
+        @participante = Participante.new()
+        @participante.encontro_id = @encontro.id
+        @participante.usuario_id = current_usuario.id
+        @participante.save
         format.html { redirect_to @encontro, notice: 'Encontro criado com sucesso.' }
         format.json { render :show, status: :created, location: @encontro }
       else

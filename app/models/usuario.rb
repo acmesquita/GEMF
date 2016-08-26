@@ -4,4 +4,8 @@ class Usuario < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 	has_many :participantes
+
+	def participa? (encontro)
+		# perguntar se pertence a esse encontro?
+	end
 end

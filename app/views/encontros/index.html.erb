@@ -38,7 +38,7 @@
         <td><%= encontro.valor %></td>
         <td><%= encontro.quant_max %></td>
         <% if policy(encontro).inscreve? %>
-          <% if policy(encontro).inscrito? %>
+          <% if !policy(encontro).inscrito? %>
             <td colspan="2">
               <%= link_to 'Inscreva-se', new_participante_path(encontro_id: encontro) , class:"btn btn-info"%>
             </td>
