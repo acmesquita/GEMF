@@ -22,11 +22,13 @@
 			x alterar as informações do encontro
 		- Somente o perfil comum pode alterar o seu cadastro
 		- Deve ser exibido para o usuário comum se há vagas disponíveis para o encontro
-
+	- Montar o Perfil para o usuário:
+		- Atualizar o cadastro
+		- Visualizar os dados cadastrados
 
 ### Melhorias
 
-	- Melhorar interface telas:
-		- Exibição do encontro
-		- Formulários
-		- Telas de Login e Logout
+	x Melhorar interface telas:
+		x Exibição do encontro
+		x Formulários
+		x Telas de Login e Logout
